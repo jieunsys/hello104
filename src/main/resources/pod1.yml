@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    app: app-hello104
+spec:
+  containers:
+  - name: container1
+    image: jieunsys/hello104
+    ports:
+    - containerPort: 8080
