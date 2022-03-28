@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 	@RequestMapping(value="/")
 	public String hello104() {
-		return "hello104 1234 !@#$";
+		return "hello104 1234 !@#$%^&";
 	}
 }
