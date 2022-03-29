@@ -1,0 +1,23 @@
+echo '====== DEPLOY START ================================'
+
+mkdir -p /tmp/hello104/
+cp /var/lib/jenkins/workspace/hello104/target/classes/Dockerfile /tmp/hello104/
+cp /var/lib/jenkins/workspace/hello104/target/hello104-0.0.1-SNAPSHOT.jar /tmp/hello104/
+cd /tmp/hello104/
+docker build -t jieunsys/hello104 -f /tmp/hello104/Dockerfile .
+#docker login --username jieunsys --password xxxxxxxxxxxxx
+#cat ~/my_password.txt | docker login --username foo --password-stdin
+# 미리 docker login 해두면 ~/.docker/config.json 이 자동으로 생성되어 자동 로그인된다.
+docker push jieunsys/hello104
+
+kubectl apply -f  /var/lib/jenkins/workspace/hello104/target/classes/pod1.yml
+kubectl apply -f  /var/lib/jenkins/workspace/hello104/target/classes/service1.yml
+
+echo '====== DEPLOY COMPLETED SUCCESSFULLY ================================'
+
+
+#jar xvf /var/lib/jenkins/workspace/hello104/target/hello104-0.0.1-SNAPSHOT.jar BOOT-INF/classes/pod1.yml
+#kubectl apply -f  BOOT-INF/classes/pod1.yml
+#jar xvf /var/lib/jenkins/workspace/hello104/target/hello104-0.0.1-SNAPSHOT.jar BOOT-INF/classes/service1.yml
+#kubectl apply -f  BOOT-INF/classes/service1.yml
+
