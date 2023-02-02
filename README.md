@@ -10,3 +10,6 @@ public class BootSpringBootApplication {
 }
 </code>
 </pre>
+
+![Alt text](/path/to/img.jpg "Optional title")
+
